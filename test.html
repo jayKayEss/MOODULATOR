@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.quicksand.js"></script>
+        <script type="text/javascript">
+            $('document').ready(function(){
+                /*
+                var before = $('#winter ol').get(0);
+                var after = $('#winter ol').get(1);
+                $(before).quicksand($(after));
+                */
+                $('#before').quicksand($('#after li'));
+            });
+        </script>
+    </head>
+    <body>
+        <div id="winter" class="month">
+            <h2>Winter</h2>
+            <ol id="before">
+                <li data-id="one">One</li>
+                <li data-id="two">Two</li>
+                <li data-id="three">Three</li>
+            </ol>
+
+            <ol id="after" style="display: none">
+                <li data-id="three">Three</li>
+                <li data-id="one">One</li>
+                <li data-id="two">Two</li>
+                <li data-id="four">Four</li>
+            </ol>
+        </div>
+   </body>
+</html>
+

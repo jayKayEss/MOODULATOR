@@ -7,6 +7,11 @@ abstract class Service {
     abstract function fixParams(&$params);
 
     function callApi($uri, $params=null, $method=HTTP_METH_GET) {
+        $raw = $this->callApiRaw($uri, $params, $method);
+        return json_decode($raw);
+    }
+
+    function callApiRaw($uri, $params=null, $method=HTTP_METH_GET) {
         $config = $this->getConfig();
 
         $full_url = $config['baseurl'] . $uri;
@@ -22,7 +27,7 @@ abstract class Service {
         $response = $request->send();
         if ($request->getResponseCode() < 300) {
             $raw = $response->getBody();
-            return json_decode($raw);
+            return $raw;
         }
 
     }
