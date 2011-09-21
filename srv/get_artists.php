@@ -5,12 +5,12 @@ require_once '../lib/Util.php';
 
 $lastfm = new LastFm();
 
-$user = $_GET['lastfm_name'];
+$user = $_GET['username'];
 $page = $_GET['page'];
 
 $data = $lastfm->callApi('/', array(
     'method' => 'user.getrecenttracks',
-    'user' => 'jaykayess',
+    'user' => $user,
     'page' => $page,
     'limit' => 25
 ));
@@ -33,11 +33,26 @@ foreach ($data->recenttracks->track as $track) {
     $artist_id = $track->artist->mbid;
 
     if (!isset($ret[$season][$artist_id])) {
-        $artist = (array)$track->artist;
-        $artist['name'] = $artist['#text'];
-        unset($artist['#text']);
-        $image = (array)(end($track->image));
-        $artist['image'] = $image['#text'];
+        $artist_data = $lastfm->callApi('/', array(
+            'method' => 'artist.getinfo',
+            'mbid' => $artist_id
+        ));
+
+        $img_count = count($artist_data->artist->image);
+
+        if ($img_count == 0) {
+            $artist['image'] = 'img/unknown.png';
+        } else {
+            if ($img_count >= 3) {
+                $image_data = (array)$artist_data->artist->image[2];
+            } else {
+                $image_data = (array)(end($artist_data->artist->image));
+            }
+        }
+
+        $artist = (array)($artist_data->artist);
+        $artist['image'] = $image_data['#text'];
+
         $ret[$season][$artist_id] = $artist;
     }
 

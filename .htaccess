@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteBase /moodulator/
+RewriteRule ^display/\w+ display.php [L]
+
+

@@ -1,37 +1,92 @@
+body {
+    background: #8D5739;
+    font-family: Andika;
+}
+
+#homepage {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+}
+
+#logo {
+    font-family: Comfortaa;
+    font-size: 96pt;
+    color: #4C9DA3;
+}
+
 #container {
+    width: 1030px;
     margin: 25px auto;
-    width: 830px;
+}
+
+input, button {
+    font-family: Andika;
+    padding: 10px;
+    background: #D9B044;
+    color: #8D5739;
+    font-size: 14px;
+    border: 0px;
+}
+
+#form label {
+    color: #D9B044;
+}
+
+div.month h2 {
+    font-family: Comfortaa;
+    color: #4C9DA3;
+    text-transform: uppercase;
 }
 
 div.month {
-    width: 375px;
+    width: 475px;
     height: 300px;
     float: left;
     margin: 5px;
     padding: 15px;
-    background: #eee;
 }
 
 .hidden {
     display: none;
 }
 
-div.month ol {
+ol.artists {
+    float: left;
+    width: 375px;
     margin: 0px;
     padding: 0px;
 }
 
-div.month li {
-/*    display: inline-block;*/
+ol.artists li {
     display: block;
     float: left;
     height: 75px;
     overflow: hidden;
 }
 
-div.month li img {
+ol.artists img {
     width: 75px;
     height: 75px;
     border: 0px;
     margin: 0px;
 }
+
+ol.tags {
+    width: 90px;
+    margin: 0px;
+    padding: 0px;
+    float: right;
+    overflow: hidden;
+}
+
+ol.tags li {
+    display: block;
+    width: 90px;
+    color: #D9B044;
+    margin: 1px;
+    padding: 0px 2px;
+    font-size: 10px;
+}
+
+
